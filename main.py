@@ -1,20 +1,14 @@
 from telegram import Update
-from telegram.ext import Updater, CommandHandler, CallbackContext
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
-# ضع التوكن مباشرة هنا
 TOKEN = "8247936232:AAFtIiF8pFcTfSEDdgrDy6qVyZwp_iqxC1s"
 
-def start(update: Update, context: CallbackContext):
-    update.message.reply_text("بوت شغال!")
-
-def main():
-    updater = Updater(TOKEN)
-    dp = updater.dispatcher
-    dp.add_handler(CommandHandler("start", start))
-    updater.start_polling()
-    updater.idle()
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("بوت شغال!")
 
 if __name__ == "__main__":
-    main()
+    app = ApplicationBuilder().token(TOKEN).build()
+    app.add_handler(CommandHandler("start", start))
+    app.run_polling()
 
 
