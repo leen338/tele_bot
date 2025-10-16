@@ -13,7 +13,7 @@ async def main():
     print("🚀 جاري تشغيل البوت...")
     await app.run_polling()
 
-if name == "main":
+if __name__ == "__main__":
     while True:
         try:
             asyncio.run(main())
@@ -21,6 +21,7 @@ if name == "main":
             print(f"⚠️ خطأ: {e}")
             print("🔁 إعادة التشغيل بعد 10 ثوانٍ...")
             asyncio.sleep(10)
+
 
 
 
